@@ -1,13 +1,13 @@
 #
-# Cookbook Name:: mongodb-tar
+# Cookbook Name:: mongodb
 # Recipe:: default
 #
 # Copyright 2015, Michael Belt
 #
 
-include_recipe 'mongodb-tar::install'
-include_recipe 'mongodb-tar::configure'
-include_recipe 'mongodb-tar::scripts'
+include_recipe 'mongodb::install'
+include_recipe 'mongodb::configure'
+include_recipe 'mongodb::scripts'
 
 service "mongodb_new" do
   service_name "mongodb"
@@ -15,4 +15,4 @@ service "mongodb_new" do
   action [:start, :enable]
 end
 
-include_recipe 'mongodb-tar::replicaset'
+include_recipe 'mongodb::replicaset'

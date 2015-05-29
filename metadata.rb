@@ -1,4 +1,4 @@
-name             'mongodb-tar'
+name             'mongodb'
 maintainer       'Michael Belt'
 maintainer_email 'michael@mdbelt.com'
 license          'Apache 2.0'

@@ -8,4 +8,4 @@ version          '0.1.0'
 
 #TODO -> Fill out supports block
 
-depends 'tar'
+depends 'ark'

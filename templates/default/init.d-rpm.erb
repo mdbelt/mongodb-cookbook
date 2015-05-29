@@ -22,7 +22,8 @@ SYSCONFIG="/etc/sysconfig/mongod"
 PIDFILEPATH=`awk -F'[:=]' -v IGNORECASE=1 '/^[[:blank:]]*(processManagement\.)?pidfilepath[[:blank:]]*[:=][[:blank:]]*/{print $2}' "$CONFIGFILE" | tr -d "[:blank:]\"'"`
 
 #mongod=${MONGOD-/usr/bin/mongod}
-mongod=/opt/mongodb/bin/mongod
+#mongod=/opt/mongodb/bin/mongod
+mongod=/usr/local/mongodb/bin/mongod
 
 #MONGO_USER=mongod
 #MONGO_GROUP=mongod

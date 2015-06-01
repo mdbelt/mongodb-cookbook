@@ -10,6 +10,5 @@ default['mongodb']['log']['dir']  = '/var/log/mongodb'
 default['mongodb']['pid']['dir']  = '/var/run/mongodb'
 default['mongodb']['data']['dir'] = '/data/db'
 
-#TODO - Don't default these... name at least
-default['mongodb']['replicaset']['chef_search'] = 'role:direct-mongo-tar'
-default['mongodb']['replicaset']['name'] = 'TestRepl'
+default['mongodb']['replicaset']['chef_search'] = ''
+default['mongodb']['replicaset']['name'] = ''

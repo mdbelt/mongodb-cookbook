@@ -22,3 +22,10 @@ template '/etc/mongod.conf' do
   group 'mongodb'
   mode 0755
 end
+
+#Open up port
+#TODO - attribute the port number.
+include_recipe 'iptables'
+iptables_rule 'mongodb-port' do
+  action :enable
+end

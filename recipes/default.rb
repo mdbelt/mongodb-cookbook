@@ -5,6 +5,7 @@
 # Copyright 2015, Michael Belt
 #
 
+include_recipe 'mongodb::structure'
 include_recipe 'mongodb::install'
 include_recipe 'mongodb::configure'
 include_recipe 'mongodb::scripts'

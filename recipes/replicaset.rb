@@ -27,7 +27,6 @@ end
 ruby_block "Search_For_Primary" do
   block do
 #Search for existing primary node.  Use Search criteria.
-#TODO attribute the criteria & port to look on
     node.run_state['Primary_Mongo'] = ""
     Chef::Search::Query.new.search(:node, node['mongodb']['replicaset']['chef_search'])[0].each do |n|
       node.run_state['Primary_Mongo'] = Mixlib::ShellOut.new("mongo #{n['hostname']}:#{n['mongodb']['port']} --quiet --eval 'rs.status().members.forEach(function(z){if(z.stateStr == \"PRIMARY\")print(z.name);})'").run_command.stdout.strip

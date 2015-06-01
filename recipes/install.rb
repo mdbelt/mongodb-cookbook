@@ -1,16 +1,21 @@
-#require 'tmpdir'
+#
+# Cookbook Name:: mongodb
+# Recipe:: install
+#
+# Copyright 2015, Michael Belt
+#
 
 # Pre-req - Make sure user & group avaialbe
 #create group
-group 'mongodb' do
+group node['mongodb']['group'] do
   system true
   action :create
 end
 
 #create user
-user 'mongodb' do
+user node['mongodb']['user'] do
   comment 'MongoDB User'
-  gid 'mongodb'
+  gid node['mongodb']['group']
   system true
   shell '/bin/bash'
   action :create
@@ -24,19 +29,19 @@ end
 # 4) Ensure the location of the binaries is in the PATH variable.
 # - We will use the ark install cookbook to download to temp directory cache, extract, add bin to path. #1, 2, 3, & 4 together
 ark "mongodb" do
-  url 'http://downloads.10gen.com/linux/mongodb-linux-x86_64-enterprise-rhel62-3.0.3.tgz'
-  version '3.0.3'
-  group 'mongodb'
-  owner 'mongodb'
+  url node['mongodb']['download']
+  version node['mongodb']['version']
+  group node['mongodb']['group']
+  owner node['mongodb']['user']
   append_env_path true
   action :install
 end
 
 # Run MongoDB -- see same url from above, further down.
 # 1)  Create the data directory.
-directory '/data/db' do
-  owner 'mongodb'
-  group 'mongodb'
+directory node['mongodb']['data']['dir'] do
+  owner node['mongodb']['user']
+  group node['mongodb']['group']
   mode '755'
   recursive true
   action :create

@@ -1,9 +1,14 @@
-#Chef::Log.warn("**********************Begin Repl Dev Block")
+#
+# Cookbook Name:: mongodb
+# Recipe:: replicaset
+#
+# Copyright 2015, Michael Belt
+#
 
 ruby_block "Does_Current_Need_Repl_Work" do
   block do
 #Search for error 94.  Non initiated (or not added) to RS
-    cmd = Mixlib::ShellOut.new("/usr/local/mongodb/bin/mongo #{node['ipaddress']}:27017 --quiet --eval 'rs.status()[\"code\"]'")
+    cmd = Mixlib::ShellOut.new("mongo #{node['ipaddress']}:#{node['mongodb']['port']} --quiet --eval 'rs.status()[\"code\"]'")
     status = cmd.run_command.stdout.strip
     if status.eql?("94")
       notifies :run, resources(:ruby_block => "Search_For_Primary"), :immediately
@@ -14,7 +19,7 @@ end
 ruby_block "Initiate_Current_Node" do
   block do
 #Initiate the RS on current node
-    Mixlib::ShellOut.new("/usr/local/mongodb/bin/mongo #{node['ipaddress']}:27017 --quiet --eval 'printjsononeline(rs.initiate())'").run_command
+    Mixlib::ShellOut.new("mongo #{node['ipaddress']}:#{node['mongodb']['port']} --quiet --eval 'printjsononeline(rs.initiate())'").run_command
   end
   action :nothing
 end
@@ -24,10 +29,8 @@ ruby_block "Search_For_Primary" do
 #Search for existing primary node.  Use Search criteria.
 #TODO attribute the criteria & port to look on
     node.run_state['Primary_Mongo'] = ""
-    Chef::Search::Query.new.search(:node, "role:direct-mongo-tar")[0].each do |n|
-#      Chef::Log.warn("**** Input: /usr/local/mongodb/bin/mongo #{n['hostname']}:27017 --quiet --eval 'rs.status().members.forEach(function(z){if(z.stateStr == \"PRIMARY\")print(z.name);})'")
-      node.run_state['Primary_Mongo'] = Mixlib::ShellOut.new("/usr/local/mongodb/bin/mongo #{n['hostname']}:27017 --quiet --eval 'rs.status().members.forEach(function(z){if(z.stateStr == \"PRIMARY\")print(z.name);})'").run_command.stdout.strip
-#      Chef::Log.warn("**** Output: " + node.run_state['Primary_Mongo'])
+    Chef::Search::Query.new.search(:node, node['mongodb']['replicaset']['chef_search'])[0].each do |n|
+      node.run_state['Primary_Mongo'] = Mixlib::ShellOut.new("mongo #{n['hostname']}:#{n['mongodb']['port']} --quiet --eval 'rs.status().members.forEach(function(z){if(z.stateStr == \"PRIMARY\")print(z.name);})'").run_command.stdout.strip
 #If results in error clear out, no match.
       if node.run_state['Primary_Mongo'].upcase.include? "ERROR"
 #Chef::Log.warn("**** error detected")
@@ -53,11 +56,7 @@ end
 ruby_block "Add_Current_To_Existing" do
   block do
 #Add the current node to the RS
-#Chef::Log.warn("****** input: /usr/local/mongodb/bin/mongo #{node.run_state['Primary_Mongo']} --quiet --eval \"printjsononeline(rs.add(\'#{node['ipaddress']}:27017\'))\"")
-    tmpcmd = Mixlib::ShellOut.new("/usr/local/mongodb/bin/mongo #{node.run_state['Primary_Mongo']} --quiet --eval \"printjsononeline(rs.add(\'#{node['ipaddress']}:27017\'))\"").run_command
-#Chef::Log.warn("***** output: " + tmpcmd.stdout)
+    tmpcmd = Mixlib::ShellOut.new("mongo #{node.run_state['Primary_Mongo']} --quiet --eval \"printjsononeline(rs.add(\'#{node['ipaddress']}:#{node['mongodb']['port']}\'))\"").run_command
   end
   action :nothing
 end
-
-#Chef::Log.warn("**********************End Repl Dev Block")

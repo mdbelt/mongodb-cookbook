@@ -7,12 +7,11 @@
 systemLog:
   destination: file
   logAppend: true
-  path: /var/log/mongodb/mongod.log
+  path: <%= node['mongodb']['log']['dir'] %>/mongod.log
 
 # Where and how to store data.
 storage:
-  dbPath: /data/db
-#  dbPath: /var/lib/mongo
+  dbPath: <%= node['mongodb']['data']['dir'] %>
   journal:
     enabled: true
 #  engine:
@@ -23,22 +22,21 @@ storage:
 processManagement:
   fork: true  # fork and run in background
   # location of pidfile
-  pidFilePath: /var/run/mongodb/mongod.pid
+  pidFilePath: <%= node['mongodb']['pid']['dir'] %>/mongod.pid
 
 # network interfaces
 net:
-  port: 27017
-#  bindIp: 127.0.0.1
+  port: <%= node['mongodb']['port'] %>
   bindIp: <%= node['ipaddress'] %>,127.0.0.1
-#  bindIp: 127.0.0.1  # Listen to local interface only, comment to listen on all interfaces.
-
 
 #security:
 
 #operationProfiling:
 
+<% if !node['mongodb']['replicaset']['name'].empty? %>
 replication:
-  replSetName: TestRepl
+  replSetName: <%= node['mongodb']['replicaset']['name'] %>
+<% end %>
 
 #sharding:
 

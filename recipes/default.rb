@@ -15,4 +15,6 @@ service "mongodb_new" do
   action [:start, :enable]
 end
 
-include_recipe 'mongodb::replicaset'
+if !node['mongodb']['replicaset']['name'].empty?
+  include_recipe 'mongodb::replicaset'
+end

@@ -13,6 +13,11 @@ template '/etc/mongod.conf' do
   mode 0755
 end
 
+#Fix RHEL ulimit warning.  See:  http://docs.mongodb.org/manual/reference/ulimit/
+cookbook_file "99-mongodb-nproc.conf" do
+  path "/etc/security/limits.d/99-mongodb-nproc.conf"
+end
+
 #Open up port
 include_recipe 'iptables'
 iptables_rule 'mongodb-port' do

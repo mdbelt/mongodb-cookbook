@@ -1,0 +1,17 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: centos-6.4-i386
+
+suites:
+  - name: default
+    run_list:
+      - recipe[mongodb::default]
+    attributes:
+      mongodb:
+        download: "https://fastdl.mongodb.org/linux/mongodb-linux-i686-3.0.3.tgz"

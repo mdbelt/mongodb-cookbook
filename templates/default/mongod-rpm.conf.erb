@@ -1,0 +1,47 @@
+# mongod.conf
+
+# for documentation of all options, see:
+#   http://docs.mongodb.org/manual/reference/configuration-options/
+
+# where to write logging data.
+systemLog:
+  destination: file
+  logAppend: true
+  path: <%= node['mongodb']['log']['dir'] %>/mongod.log
+
+# Where and how to store data.
+storage:
+  dbPath: <%= node['mongodb']['data']['dir'] %>
+  journal:
+    enabled: true
+#  engine:
+#  mmapv1:
+#  wiredTiger:
+
+# how the process runs
+processManagement:
+  fork: true  # fork and run in background
+  # location of pidfile
+  pidFilePath: <%= node['mongodb']['pid']['dir'] %>/mongod.pid
+
+# network interfaces
+net:
+  port: <%= node['mongodb']['port'] %>
+  bindIp: <%= node['ipaddress'] %>,127.0.0.1
+
+#security:
+
+#operationProfiling:
+
+<% if !node['mongodb']['replicaset']['name'].empty? %>
+replication:
+  replSetName: <%= node['mongodb']['replicaset']['name'] %>
+<% end %>
+
+#sharding:
+
+## Enterprise-Only Options
+
+#auditLog:
+
+#snmp:

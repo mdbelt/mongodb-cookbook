@@ -4,9 +4,6 @@ A cookbook to install mongodb community & enterprise.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
 #### cookbooks
 - `iptables` - mongodb needs certain ports open.
 - `ark` - install recipe uses ark installer to download & install tar.gz

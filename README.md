@@ -1,45 +1,39 @@
 mongodb Cookbook
 ====================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+A cookbook to install mongodb community & enterprise.
 
 Requirements
 ------------
 TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
 e.g.
-#### packages
-- `toaster` - mongodb needs toaster to brown your bagel.
+#### cookbooks
+- `iptables` - mongodb needs certain ports open.
+- `ark` - install recipe uses ark installer to download & install tar.gz
+
+#### OS
+- `Red Hat / Centos` 6.x family
+- ... other OS is welcome... collaborate.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
-
-e.g.
 #### mongodb::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['mongodb']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+|Key|Type|Description|Default|
+|:-------|:--------|:------|------:|
+|`['mongodb']['version']`|String|Version|3.0.3|
+|`['mongodb']['download']`|String|Download URL|....|
+|`['mongodb']['user']`|String|OS User|mongodb|
+|`['mongodb']['group']`|String|OS Group|mongodb|
+|`['mongodb']['port']`|String|port|mongodb|
+|`['mongodb']['log']['dir']`|String|log directory|/var/log/mongodb|
+|`['mongodb']['pid']['dir']`|String|pid directory|/var/run/mongodb|
+|`['mongodb']['log']['data']`|String|data directory|/var/lib/mongodb|
+|`['mongodb']['replicaset']['chef_search']`|String|Chef Search Query for peers|''|
+|`['mongodb']['replicaset']['name']`|String|Replica Set Name|''|
 
 Usage
 -----
 #### mongodb::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
 Just include `mongodb` in your node's `run_list`:
 
 ```json
@@ -53,9 +47,6 @@ Just include `mongodb` in your node's `run_list`:
 
 Contributing
 ------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -65,4 +56,4 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors: Michael Belt (mdbelt)

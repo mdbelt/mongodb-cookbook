@@ -19,3 +19,7 @@ end
 if !node['mongodb']['replicaset']['name'].empty?
   include_recipe 'mongodb::replicaset'
 end
+
+#if !node['mongodb']['mms_agent']['mmsApiKey'].empty?
+#  include_recipe 'mongodb::automation'
+#end

@@ -16,17 +16,20 @@ Attributes
 ----------
 #### mongodb::default
 |Key|Type|Description|Default|
-|:-------|:--------|:------|------:|
-|`['mongodb']['version']`|String|Version|3.0.3|
+|:-------|:--------|:------|:------|
+|`['mongodb']['version']`|String|Version|`'3.0.3'`|
 |`['mongodb']['download']`|String|Download URL|....|
-|`['mongodb']['user']`|String|OS User|mongodb|
-|`['mongodb']['group']`|String|OS Group|mongodb|
-|`['mongodb']['port']`|String|port|mongodb|
-|`['mongodb']['log']['dir']`|String|log directory|/var/log/mongodb|
-|`['mongodb']['pid']['dir']`|String|pid directory|/var/run/mongodb|
-|`['mongodb']['log']['data']`|String|data directory|/var/lib/mongodb|
-|`['mongodb']['replicaset']['chef_search']`|String|Chef Search Query for peers|''|
-|`['mongodb']['replicaset']['name']`|String|Replica Set Name|''|
+|`['mongodb']['user']`|String|OS User|`'mongodb'`|
+|`['mongodb']['group']`|String|OS Group|`'mongodb'`|
+|`['mongodb']['port']`|String|port|`'27017'`|
+|`['mongodb']['log']['dir']`|String|log directory|`'/var/log/mongodb'`|
+|`['mongodb']['pid']['dir']`|String|pid directory|`'/var/run/mongodb'`|
+|`['mongodb']['log']['data']`|String|data directory|`'/var/lib/mongodb'`|
+|`['mongodb']['replicaset']['chef_search']`|String|Chef Search Query for peers|`''`|
+|`['mongodb']['replicaset']['name']`|String|Replica Set Name|`''`|
+|`['mongodb']['auditLog']['destination']`|String|Audit Log Destination (file, syslog, console)|`'file'`|
+|`['mongodb']['auditLog']['format']`|String|Audit Log Format (BSON, JSON)|`'BSON'`|
+|`['mongodb']['auditLog']['path']`|String|Audit Log File destination|`['mongodb']['log']['dir']` + `'/auditLog.bson'`|
 
 Usage
 -----

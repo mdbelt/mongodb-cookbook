@@ -42,6 +42,11 @@ replication:
 
 ## Enterprise-Only Options
 
-#auditLog:
+<% if !node['mongodb']['auditLog']['destination'].empty? %>
+auditLog:
+  destination: <%= node['mongodb']['auditLog']['destination'] %>
+  format: <%= node['mongodb']['auditLog']['format'] %>
+  path: <%= node['mongodb']['auditLog']['path'] %>
+<% end %>
 
 #snmp:

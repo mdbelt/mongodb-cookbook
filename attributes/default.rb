@@ -14,5 +14,9 @@ default['mongodb']['data']['dir'] = '/var/lib/mongodb'
 default['mongodb']['replicaset']['chef_search'] = ''
 default['mongodb']['replicaset']['name'] = ''
 
+default['mongodb']['auditLog']['destination'] = 'file'
+default['mongodb']['auditLog']['format'] = 'BSON'
+default['mongodb']['auditLog']['path'] = "#{node['mongodb']['log']['dir']}/auditLog.bson"
+
 default['mongodb']['mms_agent']['mmsApiKey']  = ''
 default['mongodb']['mms_agent']['mmsGroupId'] = ''

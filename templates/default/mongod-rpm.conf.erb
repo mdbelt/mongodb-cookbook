@@ -47,6 +47,13 @@ auditLog:
   destination: <%= node['mongodb']['auditLog']['destination'] %>
   format: <%= node['mongodb']['auditLog']['format'] %>
   path: <%= node['mongodb']['auditLog']['path'] %>
+  <% if !node['mongodb']['auditLog']['filter'].nil? %>
+  filter: '<%= node['mongodb']['auditLog']['filter'].to_json%>'
+  <% end %>
 <% end %>
 
 #snmp:
+
+<% if !node['mongodb']['setParameter'].nil? %>
+setParameter: <%= node['mongodb']['setParameter'].to_json%>
+<% end %>

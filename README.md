@@ -30,6 +30,8 @@ Attributes
 |`['mongodb']['auditLog']['destination']`|String|Audit Log Destination (file, syslog, console)|`'file'`|
 |`['mongodb']['auditLog']['format']`|String|Audit Log Format (BSON, JSON)|`'BSON'`|
 |`['mongodb']['auditLog']['path']`|String|Audit Log File destination|`['mongodb']['log']['dir']` + `'/auditLog.bson'`|
+|`['mongodb']['auditLog']['filter']`|Hash|Audit Log Filter configuration(s)|`nil`|
+|`['mongodb']['setParameter']`|Hash|Additional configuration(s)|`nil`|
 
 Usage
 -----

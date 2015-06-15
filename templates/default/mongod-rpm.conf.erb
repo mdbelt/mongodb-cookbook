@@ -28,8 +28,26 @@ processManagement:
 net:
   port: <%= node['mongodb']['port'] %>
   bindIp: <%= node['ipaddress'] %>,127.0.0.1
+<% if !node['mongodb']['net']['ssl']['mode'].nil? %>
+  ssl:
+    mode: <%= node['mongodb']['net']['ssl']['mode']%>
+  <% if !node['mongodb']['net']['ssl']['PEMKeyFile'].nil? %>
+    PEMKeyFile: <%= node['mongodb']['net']['ssl']['PEMKeyFile']%>
+  <% end %>
+  <% if !node['mongodb']['net']['ssl']['CAFile'].nil? %>
+    CAFile: <%= node['mongodb']['net']['ssl']['CAFile']%>
+  <% end %>
+<% end %>
 
-#security:
+<% if (!node['mongodb']['security']['keyFile'].nil? and !node['mongodb']['security']['keyFile'].nil?) %>
+security:
+  <% if !node['mongodb']['security']['keyFile'].nil? %>
+  keyFile: <%= node['mongodb']['security']['keyFile'] %>
+  <% end %>
+  <% if !node['mongodb']['security']['clusterAuthMode'].nil? %>
+  clusterAuthMode: <%= node['mongodb']['security']['clusterAuthMode'] %>
+  <% end %>
+<% end %>
 
 #operationProfiling:
 

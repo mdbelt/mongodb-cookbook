@@ -27,6 +27,11 @@ Attributes
 |`['mongodb']['log']['data']`|String|data directory|`'/var/lib/mongodb'`|
 |`['mongodb']['replicaset']['chef_search']`|String|Chef Search Query for peers|`''`|
 |`['mongodb']['replicaset']['name']`|String|Replica Set Name|`''`|
+|`['mongodb']['net']['ssl']['mode']`|String|SSL Mode (disabled, allowSSL, preferSSL, requireSSL)|`''`|
+|`['mongodb']['net']['ssl']['PEMKeyFile']`|String|Location of PEM Key File|`''`|
+|`['mongodb']['net']['ssl']['CAFile']`|String|Location of CA cert File|`''`|
+|`['mongodb']['security']['keyFile']`|String|Location plain text key file|`''`|
+|`['mongodb']['security']['clusterAuthMode']`|String|Cluster Auth Mode (keyFile, sendKeyFile, sendX509, x509)|`''`|
 |`['mongodb']['auditLog']['destination']`|String|Audit Log Destination (file, syslog, console)|`'file'`|
 |`['mongodb']['auditLog']['format']`|String|Audit Log Format (BSON, JSON)|`'BSON'`|
 |`['mongodb']['auditLog']['path']`|String|Audit Log File destination|`['mongodb']['log']['dir']` + `'/auditLog.bson'`|

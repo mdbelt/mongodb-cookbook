@@ -9,10 +9,16 @@ default['mongodb']['port'] = '27017'
 default['mongodb']['log']['dir']  = '/var/log/mongodb'
 default['mongodb']['pid']['dir']  = '/var/run/mongodb'
 default['mongodb']['data']['dir'] = '/var/lib/mongodb'
-#default['mongodb']['data']['dir'] = '/data/db'
 
 default['mongodb']['replicaset']['chef_search'] = ''
 default['mongodb']['replicaset']['name'] = ''
+
+default['mongodb']['net']['ssl']['mode'] = nil
+default['mongodb']['net']['ssl']['PEMKeyFile'] = nil
+default['mongodb']['net']['ssl']['CAFile'] = nil
+
+default['mongodb']['security']['keyFile'] = nil
+default['mongodb']['security']['clusterAuthMode'] = nil
 
 default['mongodb']['auditLog']['destination'] = 'file'
 default['mongodb']['auditLog']['format'] = 'BSON'

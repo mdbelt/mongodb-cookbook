@@ -27,16 +27,25 @@ Attributes
 |`['mongodb']['log']['data']`|String|data directory|`'/var/lib/mongodb'`|
 |`['mongodb']['replicaset']['chef_search']`|String|Chef Search Query for peers|`''`|
 |`['mongodb']['replicaset']['name']`|String|Replica Set Name|`''`|
-|`['mongodb']['net']['ssl']['mode']`|String|SSL Mode (disabled, allowSSL, preferSSL, requireSSL)|`''`|
-|`['mongodb']['net']['ssl']['PEMKeyFile']`|String|Location of PEM Key File|`''`|
-|`['mongodb']['net']['ssl']['CAFile']`|String|Location of CA cert File|`''`|
-|`['mongodb']['security']['keyFile']`|String|Location plain text key file|`''`|
-|`['mongodb']['security']['clusterAuthMode']`|String|Cluster Auth Mode (keyFile, sendKeyFile, sendX509, x509)|`''`|
+|`['mongodb']['net']['ssl']['mode']`|String|SSL Mode (disabled, allowSSL, preferSSL, requireSSL)|`nil`|
+|`['mongodb']['net']['ssl']['PEMKeyFile']`|String|Location of PEM Key File|`nil`|
+|`['mongodb']['net']['ssl']['CAFile']`|String|Location of CA cert File|`nil`|
+|`['mongodb']['security']['keyFile']`|String|Location plain text key file|`nil`|
+|`['mongodb']['security']['clusterAuthMode']`|String|Cluster Auth Mode (keyFile, sendKeyFile, sendX509, x509)|`nil`|
 |`['mongodb']['auditLog']['destination']`|String|Audit Log Destination (file, syslog, console)|`'file'`|
 |`['mongodb']['auditLog']['format']`|String|Audit Log Format (BSON, JSON)|`'BSON'`|
 |`['mongodb']['auditLog']['path']`|String|Audit Log File destination|`['mongodb']['log']['dir']` + `'/auditLog.bson'`|
 |`['mongodb']['auditLog']['filter']`|Hash|Audit Log Filter configuration(s)|`nil`|
 |`['mongodb']['setParameter']`|Hash|Additional configuration(s)|`nil`|
+|`['mongodb']['mms']['automation']['version']`|String|MMS Automation Version|`2.0.8.1184-1`|
+|`['mongodb']['mms']['automation']['download']`|String|MMS Automation Download URL|....|
+|`['mongodb']['mms']['monitoring']['version']`|String|MMS Monitoring Version|`3.4.0.190-1`|
+|`['mongodb']['mms']['monitoring']['download']`|String|MMS Monitoring Download URL|....|
+|`['mongodb']['mms']['backup']['version']`|String|MMS Backup Version|`3.4.0.273-1`|
+|`['mongodb']['mms']['backup']['download']`|String|MMS Backup Download URL|....|
+|`['mongodb']['mms']['coordinator_agent_host']`|String|Host of client agent to allow monitoring & backup.  nil is all.|`nil`|
+|`['mongodb']['mms']['mmsApiKey']`|String|MMS API Key.  If present automation recipe(s) will run.|`''`|
+|`['mongodb']['mms']['mmsGroupId']`|String|MMS Group ID.|`''`|
 
 Usage
 -----

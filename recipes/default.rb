@@ -20,6 +20,10 @@ if !node['mongodb']['replicaset']['name'].empty?
   include_recipe 'mongodb::replicaset'
 end
 
-#if !node['mongodb']['mms_agent']['mmsApiKey'].empty?
-#  include_recipe 'mongodb::automation'
-#end
+if !node['mongodb']['mms']['mmsApiKey'].empty?
+  include_recipe 'mongodb::automation'
+  if (node['mongodb']['mms']['coordinator_agent_host'].nil? or node['mongodb']['mms']['coordinator_agent_host'].eql?(node['hostname']))
+    include_recipe 'mongodb::monitoring'
+    include_recipe 'mongodb::backup'
+  end
+end

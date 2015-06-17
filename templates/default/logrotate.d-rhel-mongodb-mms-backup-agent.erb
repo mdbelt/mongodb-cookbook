@@ -1,0 +1,10 @@
+# mongodb-mms-backup-agent package
+
+/var/log/mongodb-mms/backup-agent.log {
+    compress
+    daily
+    rotate 5
+    copytruncate
+    missingok
+}
+

@@ -30,6 +30,7 @@ Attributes
 |`['mongodb']['net']['ssl']['mode']`|String|SSL Mode (disabled, allowSSL, preferSSL, requireSSL)|`nil`|
 |`['mongodb']['net']['ssl']['PEMKeyFile']`|String|Location of PEM Key File|`nil`|
 |`['mongodb']['net']['ssl']['CAFile']`|String|Location of CA cert File|`nil`|
+|`['mongodb']['net']['ssl']['allowConnectionsWithoutCertificates']`|String|Allow a client to connect without client certificate|`nil`|
 |`['mongodb']['security']['keyFile']`|String|Location plain text key file|`nil`|
 |`['mongodb']['security']['clusterAuthMode']`|String|Cluster Auth Mode (keyFile, sendKeyFile, sendX509, x509)|`nil`|
 |`['mongodb']['auditLog']['destination']`|String|Audit Log Destination (file, syslog, console)|`'file'`|

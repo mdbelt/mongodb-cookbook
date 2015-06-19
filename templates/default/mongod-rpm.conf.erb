@@ -37,9 +37,12 @@ net:
   <% if !node['mongodb']['net']['ssl']['CAFile'].nil? %>
     CAFile: <%= node['mongodb']['net']['ssl']['CAFile']%>
   <% end %>
+  <% if !node['mongodb']['net']['ssl']['allowConnectionsWithoutCertificates'].nil? %>
+    allowConnectionsWithoutCertificates: <%= node['mongodb']['net']['ssl']['allowConnectionsWithoutCertificates'] %>
+  <% end %>
 <% end %>
 
-<% if (!node['mongodb']['security']['keyFile'].nil? and !node['mongodb']['security']['keyFile'].nil?) %>
+<% if (!node['mongodb']['security']['keyFile'].nil? or !node['mongodb']['security']['clusterAuthMode'].nil?) %>
 security:
   <% if !node['mongodb']['security']['keyFile'].nil? %>
   keyFile: <%= node['mongodb']['security']['keyFile'] %>

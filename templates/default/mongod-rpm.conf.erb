@@ -42,8 +42,11 @@ net:
   <% end %>
 <% end %>
 
-<% if (!node['mongodb']['security']['keyFile'].nil? or !node['mongodb']['security']['clusterAuthMode'].nil?) %>
+<% if (!node['mongodb']['security']['authorization'].nil? or !node['mongodb']['security']['keyFile'].nil? or !node['mongodb']['security']['clusterAuthMode'].nil?) %>
 security:
+  <% if !node['mongodb']['security']['authorization'].nil? %>
+  authorization: <%= node['mongodb']['security']['authorization'] %>
+  <% end %>
   <% if !node['mongodb']['security']['keyFile'].nil? %>
   keyFile: <%= node['mongodb']['security']['keyFile'] %>
   <% end %>
@@ -75,6 +78,15 @@ auditLog:
 
 #snmp:
 
-<% if !node['mongodb']['setParameter'].nil? %>
-setParameter: <%= node['mongodb']['setParameter'].to_json%>
+<% if (!node['mongodb']['setParameter']['auditAuthorizationSuccess'].nil? or !node['mongodb']['setParameter']['saslauthdPath'].nil? or !node['mongodb']['setParameter']['authenticationMechanisms'].nil?) %>
+setParameter:
+  <% if !node['mongodb']['setParameter']['auditAuthorizationSuccess'].nil? %>
+  auditAuthorizationSuccess: <%= node['mongodb']['setParameter']['auditAuthorizationSuccess']%>
+  <% end %>
+  <% if !node['mongodb']['setParameter']['saslauthdPath'].nil? %>
+  saslauthdPath: <%= node['mongodb']['setParameter']['saslauthdPath']%>
+  <% end %>
+  <% if !node['mongodb']['setParameter']['authenticationMechanisms'].nil? %>
+  authenticationMechanisms: <%= node['mongodb']['setParameter']['authenticationMechanisms']%>
+  <% end %>
 <% end %>

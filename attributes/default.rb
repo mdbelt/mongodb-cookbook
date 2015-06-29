@@ -26,7 +26,9 @@ default['mongodb']['auditLog']['format'] = 'BSON'
 default['mongodb']['auditLog']['path'] = "#{node['mongodb']['log']['dir']}/auditLog.bson"
 default['mongodb']['auditLog']['filter'] = nil
 
-default['mongodb']['setParameter'] = nil
+default['mongodb']['setParameter']['auditAuthorizationSuccess'] = nil
+default['mongodb']['setParameter']['saslauthdPath'] = nil
+default['mongodb']['setParameter']['authenticationMechanisms'] = nil
 
 default['mongodb']['mms']['automation']['version']  = '2.0.8.1184-1'
 default['mongodb']['mms']['automation']['download'] = "https://mms.mongodb.com/download/agent/automation/mongodb-mms-automation-agent-#{node['mongodb']['mms']['automation']['version']}.linux_x86_64.tar.gz"

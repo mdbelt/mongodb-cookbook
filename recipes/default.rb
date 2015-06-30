@@ -10,7 +10,7 @@ include_recipe 'mongodb::install'
 include_recipe 'mongodb::configure'
 include_recipe 'mongodb::scripts'
 
-service "mongodb_new" do
+service "mongodb" do
   service_name "mongodb"
   supports :status => true, :start => true, :stop => true
   action [:start, :enable]

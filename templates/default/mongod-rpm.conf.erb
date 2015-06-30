@@ -42,13 +42,13 @@ net:
   <% end %>
 <% end %>
 
-<% if (!node['mongodb']['security']['authorization'].nil? or !node['mongodb']['security']['keyFile'].nil? or !node['mongodb']['security']['clusterAuthMode'].nil?) %>
+<% if (!node['mongodb']['security']['authorization'].nil? or !node['mongodb']['security']['keyFile']['file'].nil? or !node['mongodb']['security']['clusterAuthMode'].nil?) %>
 security:
   <% if !node['mongodb']['security']['authorization'].nil? %>
   authorization: <%= node['mongodb']['security']['authorization'] %>
   <% end %>
-  <% if !node['mongodb']['security']['keyFile'].nil? %>
-  keyFile: <%= node['mongodb']['security']['keyFile'] %>
+  <% if !node['mongodb']['security']['keyFile']['file'].nil? %>
+  keyFile: <%= node['mongodb']['security']['keyFile']['file'] %>
   <% end %>
   <% if !node['mongodb']['security']['clusterAuthMode'].nil? %>
   clusterAuthMode: <%= node['mongodb']['security']['clusterAuthMode'] %>

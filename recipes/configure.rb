@@ -11,11 +11,21 @@ template '/etc/mongod.conf' do
   owner node['mongodb']['user']
   group node['mongodb']['group']
   mode 0755
+  notifies :restart, 'service[mongodb]', :delayed
 end
 
 #Fix RHEL ulimit warning.  See:  http://docs.mongodb.org/manual/reference/ulimit/
 cookbook_file "99-mongodb-nproc.conf" do
   path "/etc/security/limits.d/99-mongodb-nproc.conf"
+end
+
+file 'keyfile' do
+  path node['mongodb']['security']['keyFile']['file']
+  owner node['mongodb']['user']
+  group node['mongodb']['group']
+  mode 0600
+  content node['mongodb']['security']['keyFile']['content']
+  not_if { node['mongodb']['security']['keyFile']['content'].nil? }
 end
 
 #Open up port

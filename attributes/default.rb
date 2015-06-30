@@ -18,7 +18,8 @@ default['mongodb']['net']['ssl']['PEMKeyFile'] = nil
 default['mongodb']['net']['ssl']['CAFile'] = nil
 default['mongodb']['net']['ssl']['allowConnectionsWithoutCertificates'] = nil
 
-default['mongodb']['security']['keyFile'] = nil
+default['mongodb']['security']['keyFile']['file'] = nil
+default['mongodb']['security']['keyFile']['content'] = nil
 default['mongodb']['security']['clusterAuthMode'] = nil
 
 default['mongodb']['auditLog']['destination'] = 'file'

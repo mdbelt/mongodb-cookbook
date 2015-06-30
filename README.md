@@ -32,7 +32,8 @@ Attributes
 |`['mongodb']['net']['ssl']['CAFile']`|String|Location of CA cert File|`nil`|
 |`['mongodb']['net']['ssl']['allowConnectionsWithoutCertificates']`|String|Allow a client to connect without client certificate|`nil`|
 |`['mongodb']['security']['authorization']`|String|Security Authorization toggle (enabled, disabled, nil)|`nil`|
-|`['mongodb']['security']['keyFile']`|String|Location plain text key file|`nil`|
+|`['mongodb']['security']['keyFile']['file']`|String|Location plain text key file|`nil`|
+|`['mongodb']['security']['keyFile']['content']`|String|String to populate keyfile content.|`nil`|
 |`['mongodb']['security']['clusterAuthMode']`|String|Cluster Auth Mode (keyFile, sendKeyFile, sendX509, x509)|`nil`|
 |`['mongodb']['auditLog']['destination']`|String|Audit Log Destination (file, syslog, console)|`'file'`|
 |`['mongodb']['auditLog']['format']`|String|Audit Log Format (BSON, JSON)|`'BSON'`|

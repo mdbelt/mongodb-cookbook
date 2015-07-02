@@ -42,13 +42,8 @@ Attributes
 |`['mongodb']['setParameter']['auditAuthorizationSuccess']`|boolean|Enable audit of authorization success.|`nil`|
 |`['mongodb']['setParameter']['saslauthdPath']`|String|Location of saslauthd mux|`nil`|
 |`['mongodb']['setParameter']['authenticationMechanisms']`|String|Authentication mechanism (PLAIN)|`nil`|
-|`['mongodb']['mms']['automation']['version']`|String|MMS Automation Version|`2.0.8.1184-1`|
+|`['mongodb']['mms']['automation']['version']`|String|MMS Automation Version|`latest`|
 |`['mongodb']['mms']['automation']['download']`|String|MMS Automation Download URL|....|
-|`['mongodb']['mms']['monitoring']['version']`|String|MMS Monitoring Version|`3.4.0.190-1`|
-|`['mongodb']['mms']['monitoring']['download']`|String|MMS Monitoring Download URL|....|
-|`['mongodb']['mms']['backup']['version']`|String|MMS Backup Version|`3.4.0.273-1`|
-|`['mongodb']['mms']['backup']['download']`|String|MMS Backup Download URL|....|
-|`['mongodb']['mms']['coordinator_agent_host']`|String|Host of client agent to allow monitoring & backup.  nil is all.|`nil`|
 |`['mongodb']['mms']['mmsApiKey']`|String|MMS API Key.  If present automation recipe(s) will run.|`''`|
 |`['mongodb']['mms']['mmsGroupId']`|String|MMS Group ID.|`''`|
 

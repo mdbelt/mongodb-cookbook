@@ -31,16 +31,8 @@ default['mongodb']['setParameter']['auditAuthorizationSuccess'] = nil
 default['mongodb']['setParameter']['saslauthdPath'] = nil
 default['mongodb']['setParameter']['authenticationMechanisms'] = nil
 
-default['mongodb']['mms']['automation']['version']  = '2.0.8.1184-1'
+default['mongodb']['mms']['automation']['version']  = 'latest'
 default['mongodb']['mms']['automation']['download'] = "https://mms.mongodb.com/download/agent/automation/mongodb-mms-automation-agent-#{node['mongodb']['mms']['automation']['version']}.linux_x86_64.tar.gz"
-
-default['mongodb']['mms']['monitoring']['version']  = '3.4.0.190-1'
-default['mongodb']['mms']['monitoring']['download'] = "https://mms.mongodb.com/download/agent/monitoring/mongodb-mms-monitoring-agent-#{node['mongodb']['mms']['monitoring']['version']}.linux_x86_64.tar.gz"
-
-default['mongodb']['mms']['backup']['version']  = '3.4.0.273-1'
-default['mongodb']['mms']['backup']['download'] = "https://mms.mongodb.com/download/agent/backup/mongodb-mms-backup-agent-#{node['mongodb']['mms']['backup']['version']}.linux_x86_64.tar.gz"
-
-default['mongodb']['mms']['coordinator_agent_host'] = nil
 
 default['mongodb']['mms']['mmsApiKey']  = ''
 default['mongodb']['mms']['mmsGroupId'] = ''

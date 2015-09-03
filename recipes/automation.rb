@@ -5,6 +5,17 @@
 # Copyright 2015, Michael Belt
 #
 
+#Install munin client (required by MMS for OS stats)
+include_recipe 'munin::client'
+
+%w(
+iostat
+iostat_ios
+cpu
+).each do |plugin_name|
+  munin_plugin plugin_name
+end
+
 #Create directories
 [
   "/var/log/mongodb-mms-automation",

@@ -33,3 +33,8 @@ include_recipe 'iptables'
 iptables_rule 'mongodb-port' do
   action :enable
 end
+
+#Clamp down swap
+node.default['sysctl']['params']['vm']['swappiness'] = 10
+include_recipe 'sysctl::apply'
+

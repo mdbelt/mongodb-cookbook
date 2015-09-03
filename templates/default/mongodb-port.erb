@@ -1,3 +1,4 @@
 -I INPUT -p tcp --dport <%= node['mongodb']['port'] %> -j ACCEPT
 -I INPUT -p tcp --dport 27000 -j ACCEPT
 -I INPUT -p tcp --dport 27020 -j ACCEPT
+-I INPUT -p tcp --dport 4949 -j ACCEPT

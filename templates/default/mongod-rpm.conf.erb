@@ -8,6 +8,7 @@ systemLog:
   destination: file
   logAppend: true
   path: <%= node['mongodb']['log']['dir'] %>/mongod.log
+  logRotate: <%= node['mongodb']['systemLog']['logRotate'] %>
 
 # Where and how to store data.
 storage:

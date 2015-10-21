@@ -13,6 +13,8 @@ default['mongodb']['data']['dir'] = '/var/lib/mongodb'
 default['mongodb']['replicaset']['chef_search'] = ''
 default['mongodb']['replicaset']['name'] = ''
 
+default['mongodb']['systemLog']['logRotate'] = 'rename'
+
 default['mongodb']['net']['ssl']['mode'] = nil
 default['mongodb']['net']['ssl']['PEMKeyFile'] = nil
 default['mongodb']['net']['ssl']['CAFile'] = nil

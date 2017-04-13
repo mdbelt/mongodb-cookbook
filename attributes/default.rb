@@ -1,5 +1,5 @@
-default['mongodb']['version']  = '3.0.3'
-default['mongodb']['download'] = "http://downloads.10gen.com/linux/mongodb-linux-x86_64-enterprise-rhel62-#{node['mongodb']['version']}.tgz"
+default['mongodb']['version']  = '3.2.12'
+default['mongodb']['download'] = "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel62-#{node['mongodb']['version']}.tgz"
 
 default['mongodb']['user']  = 'mongodb'
 default['mongodb']['group'] = 'mongodb'
@@ -14,6 +14,8 @@ default['mongodb']['replicaset']['chef_search'] = ''
 default['mongodb']['replicaset']['name'] = ''
 
 default['mongodb']['systemLog']['logRotate'] = 'rename'
+
+default['mongodb']['storage']['engine'] = 'mmapv1'
 
 default['mongodb']['net']['ssl']['mode'] = nil
 default['mongodb']['net']['ssl']['PEMKeyFile'] = nil

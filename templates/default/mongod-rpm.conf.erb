@@ -15,7 +15,7 @@ storage:
   dbPath: <%= node['mongodb']['data']['dir'] %>
   journal:
     enabled: true
-#  engine:
+  engine: <%= node['mongodb']['storage']['engine'] %>
 #  mmapv1:
 #  wiredTiger:
 

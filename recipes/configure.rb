@@ -35,6 +35,11 @@ iptables_rule 'mongodb-port' do
 end
 
 #Clamp down swap
-node.default['sysctl']['params']['vm']['swappiness'] = 10
-include_recipe 'sysctl::apply'
+#node.default['sysctl']['params']['vm']['swappiness'] = 10
+#include_recipe 'sysctl::apply'
+sysctl_param 'vm.swappiness' do
+  value 1
+  ignore_error true
+end
+
 
